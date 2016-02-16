@@ -27,13 +27,13 @@ get '/edit-one-entry-form/:id' do
   erb :'entries/edit'
 end
 
-post '/update-entry/:id' do
+put '/update-entry/:id' do
   entry = Entry.find(params[:id])
   entry.update_attributes(params[:entry])
   redirect "/show-one-entry/#{entry.id}"
 end
 
-get '/delete-entry/:id' do
+delete '/delete-entry/:id' do
   entry = Entry.find(params[:id])
   entry.destroy
   redirect '/all-the-entries'
